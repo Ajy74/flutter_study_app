@@ -17,7 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       body: Container(
         alignment: Alignment.center,
-        decoration: BoxDecoration(gradient: mainGradient(context)),
+        decoration: BoxDecoration(gradient: mainGradient()),
         child: Image.asset("assets/images/app_splash_logo.png",width: 200, height: 200,),
       ),
     );

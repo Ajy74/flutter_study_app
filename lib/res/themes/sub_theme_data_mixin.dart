@@ -16,4 +16,5 @@ mixin SubThemeData{
   IconThemeData getIconTheme(){
     return const IconThemeData(color: onSurfaceTextColor,size: 16);
   }
+
 } 

@@ -1,13 +1,13 @@
-// import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:study_app/bindings/initial_bindings.dart';
 import 'package:study_app/controllers/theme_controller.dart';
 import 'package:study_app/res/themes/app_dark_theme.dart';
 import 'package:study_app/res/themes/app_light_theme.dart';
-// import 'package:study_app/data_uploader_screen.dart';
+import 'package:study_app/data_uploader_screen.dart';
 import 'package:study_app/routes/routes.dart';
-// import 'firebase_options.dart';
+import 'firebase_options.dart';
 
 
 /*  this code is for uploading data to firebase database to reduce manual work 
@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
     return  GetMaterialApp(
       title: 'Study App',
       // theme: LightTheme().buildLightTheme(),
-      theme: Get.find<ThemeController>().darkTheme ,
+      theme: Get.find<ThemeController>().lightTheme ,
       debugShowCheckedModeBanner: false,
       getPages: AppRoutes.appRoutes(),
     );
