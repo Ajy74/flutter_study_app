@@ -1,33 +1,42 @@
-import 'package:cached_network_image/cached_network_image.dart';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_zoom_drawer/config.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/get_core.dart';
 import 'package:study_app/controllers/question_paper/question_paper_controller.dart';
 import 'package:study_app/res/text_style/custom_text_style.dart';
 import 'package:study_app/res/themes/app_color.dart';
+import 'package:study_app/res/themes/app_dark_theme.dart';
 import 'package:study_app/res/themes/app_icon.dart';
+import 'package:study_app/res/themes/app_light_theme.dart';
 import 'package:study_app/res/themes/ui_parameters.dart';
+import 'package:study_app/screens/home/menu_screen.dart';
 import 'package:study_app/widgets/app_circle_button.dart';
 import 'package:study_app/widgets/content_area.dart';
 import 'package:study_app/widgets/question_card.dart';
 
-class HomeScreen extends StatefulWidget {
+import '../../controllers/zoom_drawer_controller.dart';
+
+class HomeScreen extends GetView<MyZoomDrawerController> {
 
   HomeScreen({super.key});
 
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
   QuestionPaperController questionPaperController = Get.find();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ZoomDrawer(
-        menuScreen: Text("hi there",style: TextStyle(color: Colors.red),),
+      body: GetBuilder<MyZoomDrawerController>(builder: (_){
+        return  ZoomDrawer(
+        controller: _.zoomDrawerController,
+        borderRadius:50.0 ,
+        showShadow: true,
+        angle: 0.0,
+        style: DrawerStyle.defaultStyle,
+        menuBackgroundColor:Get.isDarkMode?primaryDarkColordark: primaryLightColorLight,
+        slideWidth: MediaQuery.of(context).size.width*0.7,
+        menuScreen: MenuScreen(),
+        androidCloseOnBackTap: true,
         mainScreen: Container(
           decoration: BoxDecoration(
             gradient: Get.isDarkMode?mainGradientDark:mainGradientLight
@@ -41,8 +50,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                       AppCircleButton(child: Icon(AppIcons.menuLeft,),
-                       onPress: null,),....
+                       AppCircleButton(
+                        child: Icon(AppIcons.menuLeft,),
+                        onPress: controller.toogleDrawer,
+                      ),
                       const SizedBox(height: 10,),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 12),
@@ -92,7 +103,9 @@ class _HomeScreenState extends State<HomeScreen> {
           )
            ),
          
-      )
+      ) ;
+      }),
+
     );
   }
 }

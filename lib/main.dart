@@ -20,8 +20,11 @@ Future<void> main()async{
 }
 */
 
-void main(){
+void main() async{
   WidgetsFlutterBinding.ensureInitialized(); //use to waits for all the bindings to be done then proceeds other app process
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   InitialBindings().dependencies(); 
   runApp(const MyApp());
 }
@@ -33,7 +36,7 @@ class MyApp extends StatelessWidget {
     return  GetMaterialApp(
       title: 'Study App',
       // theme: LightTheme().buildLightTheme(),
-      theme: Get.find<ThemeController>().lightTheme ,
+      theme: Get.isDarkMode?Get.find<ThemeController>().darkTheme:Get.find<ThemeController>().lightTheme,
       debugShowCheckedModeBanner: false,
       getPages: AppRoutes.appRoutes(),
     );

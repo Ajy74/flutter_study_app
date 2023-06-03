@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
+import 'package:study_app/controllers/auth_controller.dart';
 import 'package:study_app/firebase_ref/references.dart';
 import 'package:study_app/models/question_paper_model.dart';
 
@@ -16,9 +17,9 @@ class QuestionPaperController extends GetxController{
 
   @override
   void onReady() async {
-    await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
-    );
+    // await Firebase.initializeApp(
+    //   options: DefaultFirebaseOptions.currentPlatform,
+    // );
     getAllPapers();
     super.onReady();
   }
@@ -45,6 +46,24 @@ class QuestionPaperController extends GetxController{
 
     } catch (e) {
       print("qpc..error..$e");
+    }
+  }
+
+  void navigateToQuestions({required QuestionPaperModel paper, bool tryAgain=false}){
+    AuthController _authController = Get.find(); 
+    if(_authController.isLoggedIn()){
+      if(tryAgain){
+        Get.back();
+        //Get.offNamed()
+      }
+      else{
+        //Get.toNamed()
+        print("##**..Ajay here...");
+      }
+    }
+    else{
+      print("not logged...${paper.title}");
+      _authController.showLoginAlertDialogue();
     }
   }
 
