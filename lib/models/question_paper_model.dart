@@ -43,13 +43,13 @@ class QuestionPaperModel {
     questions = (json['questions'] as List).map((dynamic e) => Questions.fromJson(e as Map<String,dynamic>)).toList();
 
 //this is for getting data from firestore
-  QuestionPaperModel.fromSnapshot(DocumentSnapshot<Map<String,dynamic>> json) :
-    id = json.id ,
-    title = json['title'] ,
-    imageUrl = json['image_url'] ,
-    description = json['Description'] ,
-    timeSeconds = json['time_seconds'] ,
-    questionCount=json['questions_count'] as int,
+  QuestionPaperModel.fromSnapshot(DocumentSnapshot<Map<String,dynamic>> snapshot) :
+    id = snapshot.id ,
+    title = snapshot['title'] ,
+    imageUrl = snapshot['image_url'] ,
+    description = snapshot['Description'] ,
+    timeSeconds = snapshot['time_seconds'] ,
+    questionCount=snapshot['questions_count'] as int,
     questions = [];
     //   final data = json.data();
     //   id = json.id;
@@ -84,6 +84,7 @@ class Questions {
   String? question;
   List<Answers>? answers;
   String? correctAnswer;
+  String? selectedAnswer;
 
   Questions({this.id, this.question, this.answers, this.correctAnswer});
 
@@ -92,6 +93,12 @@ class Questions {
     question = json['question'],
     answers = (json['answers'] as List).map((e) => Answers.fromJson(e)).toList(),
     correctAnswer = json['correct_answer'];
+
+  Questions.fromSnapshot(QueryDocumentSnapshot<Map<String,dynamic>> snapshot) :
+    id = snapshot.id ,
+    question = snapshot['question'] ,
+    correctAnswer = snapshot['correct_answer'] ,
+    answers = [];
   
 
   Map<String, dynamic> toJson() {
@@ -115,6 +122,10 @@ class Answers {
   Answers.fromJson(Map<String, dynamic> json) :
     identifier = json['identifier'],
     answer = json['Answer'];
+
+  Answers.fromSnapshot(QueryDocumentSnapshot<Map<String,dynamic>> snapshot):
+    identifier = snapshot['identifier'] as String?,
+    answer = snapshot['Answer'] as String?;
   
 
   Map<String, dynamic> toJson() {

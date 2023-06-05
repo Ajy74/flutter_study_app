@@ -57,8 +57,7 @@ class QuestionPaperController extends GetxController{
         //Get.offNamed()
       }
       else{
-        //Get.toNamed()
-        print("##**..Ajay here...");
+        Get.toNamed("/question_screen",arguments: paper);
       }
     }
     else{
