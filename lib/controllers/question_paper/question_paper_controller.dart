@@ -54,11 +54,10 @@ class QuestionPaperController extends GetxController{
     if(_authController.isLoggedIn()){
       if(tryAgain){
         Get.back();
-        //Get.offNamed()
+       Get.toNamed("/question_screen",arguments: paper,preventDuplicates: false);
       }
       else{
-        //Get.toNamed()
-        print("##**..Ajay here...");
+        Get.toNamed("/question_screen",arguments: paper);
       }
     }
     else{

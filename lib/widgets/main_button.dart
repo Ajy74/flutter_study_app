@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:study_app/res/themes/app_color.dart';
+import 'package:study_app/res/themes/app_dark_theme.dart';
 
 class MainButton extends StatelessWidget {
   const MainButton({super.key,  this.title='', required this.onTap, this.enabled=true, this.child, this.color});
@@ -22,14 +24,14 @@ class MainButton extends StatelessWidget {
             width: double.maxFinite,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
-              color: color??Theme.of(context).cardColor,
+              color: color??(Get.isDarkMode?primaryColorDark.withOpacity(.6):Theme.of(context).cardColor),
             ),
             child: Padding(
               padding: const EdgeInsets.all(10.0),
               child: child??Center(
-                child: Text(title,style: const TextStyle(
+                child: Text(title,style: TextStyle(
                 fontWeight: FontWeight.bold,
-                color: onSurfaceTextColor
+                color: Get.isDarkMode?onSurfaceTextColor:Theme.of(context).primaryColor
               ),),
               ),
             ),

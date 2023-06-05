@@ -54,6 +54,9 @@ class MyZoomDrawerController extends GetxController{
 
   Future<void> _launch(Uri url)async{
     if(await launchUrl(url)){
+      //url load success
+    }
+    else{
       throw 'could not launch $url';
     }
   }

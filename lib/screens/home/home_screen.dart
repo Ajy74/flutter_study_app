@@ -17,6 +17,7 @@ import 'package:study_app/widgets/question_card.dart';
 
 import '../../controllers/zoom_drawer_controller.dart';
 
+// ignore: must_be_immutable
 class HomeScreen extends GetView<MyZoomDrawerController> {
 
   HomeScreen({super.key});
@@ -35,7 +36,7 @@ class HomeScreen extends GetView<MyZoomDrawerController> {
         style: DrawerStyle.defaultStyle,
         menuBackgroundColor:Get.isDarkMode?primaryDarkColordark: primaryLightColorLight,
         slideWidth: MediaQuery.of(context).size.width*0.7,
-        menuScreen: MenuScreen(),
+        menuScreen: const MenuScreen(),
         androidCloseOnBackTap: true,
         mainScreen: Container(
           decoration: BoxDecoration(

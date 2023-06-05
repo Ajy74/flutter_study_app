@@ -36,8 +36,9 @@ class MyApp extends StatelessWidget {
     return  GetMaterialApp(
       title: 'Study App',
       // theme: LightTheme().buildLightTheme(),
-      theme: Get.isDarkMode?Get.find<ThemeController>().darkTheme:Get.find<ThemeController>().lightTheme,
+      theme: Get.find<ThemeController>().lightTheme,
       debugShowCheckedModeBanner: false,
+      darkTheme: Get.find<ThemeController>().darkTheme,
       getPages: AppRoutes.appRoutes(),
     );
   }

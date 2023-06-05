@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:study_app/controllers/question_paper/question_paper_controller.dart';
 import 'package:study_app/models/question_paper_model.dart';
 import 'package:study_app/res/text_style/custom_text_style.dart';
+import 'package:study_app/res/themes/app_dark_theme.dart';
 import 'package:study_app/res/themes/ui_parameters.dart';
 
 import '../res/themes/app_icon.dart';
@@ -19,7 +20,7 @@ class QuestionCard extends GetView<QuestionPaperController> {
     return Container(
       decoration: BoxDecoration(
         borderRadius: UIParameters.cardBorderRadius,
-        color: Theme.of(context).cardColor
+        color: Get.isDarkMode?primaryColorDark.withOpacity(.5):Theme.of(context).cardColor
       ),
       child: InkWell(
         onTap: () {
@@ -43,7 +44,10 @@ class QuestionCard extends GetView<QuestionPaperController> {
                           child: CachedNetworkImage(
                             placeholder: (context, url) => Container(
                               alignment: Alignment.center,
-                              child: const CircularProgressIndicator(),
+                              child:const Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child:  CircularProgressIndicator(),
+                              ),
                             ) ,
                             imageUrl: model.imageUrl!,
                             errorWidget: (context, url, error) => Image.asset("assets/images/app_splash_logo.png"),
@@ -102,14 +106,14 @@ class QuestionCard extends GetView<QuestionPaperController> {
               ),
               Positioned(
                 bottom: -10.0,
-                right: -10.0,
+                right: -11.0,
                 child: GestureDetector(
                   child: Container(
                     padding: const EdgeInsets.symmetric(vertical: 12,horizontal: 20),
                     child: Icon(AppIcons.trophyOutline),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.only(topLeft: Radius.circular(cardBorderRadius),bottomRight: Radius.circular(cardBorderRadius)),
-                      color: Theme.of(context).primaryColor,
+                      color: Get.isDarkMode?primaryDarkColordark:Theme.of(context).primaryColor,
                     ),
                   ),
                 ),
