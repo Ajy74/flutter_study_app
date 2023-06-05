@@ -10,6 +10,7 @@ import 'package:study_app/screens/splash/splash_screen.dart';
 
 import '../controllers/question_paper/question_controller.dart';
 import '../screens/introduction/introduction.dart';
+import '../screens/question/answer_check_screen.dart';
 import '../screens/question/test_overview_screen.dart';
 
 class AppRoutes{
@@ -73,9 +74,13 @@ class AppRoutes{
       page: () =>  ResultScreen(),
       transition: Transition.leftToRightWithFade,
       transitionDuration: Duration(milliseconds: 250) ,
-      // binding: BindingsBuilder(() {   //uses for onReady if used for this page
-      //   Get.put(QuestionController());
-      // })
+    ),
+
+    GetPage(
+      name: RoutesName.answerCheckScreen,
+      page: () =>  AnswerCheckScreen(),
+      transition: Transition.leftToRightWithFade,
+      transitionDuration: Duration(milliseconds: 250) ,
     ),
 
   ];

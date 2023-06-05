@@ -11,6 +11,8 @@ import 'package:study_app/widgets/custom_app_bar..dart';
 import 'package:study_app/widgets/main_button.dart';
 import 'package:study_app/widgets/question_number_card.dart';
 
+import '../../res/themes/app_dark_theme.dart';
+
 class TestOverviewScreen extends GetView<QuestionController> {
   const TestOverviewScreen({super.key});
 
@@ -80,7 +82,7 @@ class TestOverviewScreen extends GetView<QuestionController> {
         ),
 
         ColoredBox(
-          color:Theme.of(context).scaffoldBackgroundColor,
+          color:Get.isDarkMode?primaryDarkColordark:Color.fromARGB(255, 240, 237, 255),
           child: Padding(
             padding:UIParameters.mobileScreenpadding,
             child: MainButton(

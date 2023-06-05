@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:study_app/res/themes/app_color.dart';
+import 'package:study_app/res/themes/app_dark_theme.dart';
 import 'package:study_app/res/themes/ui_parameters.dart';
 import 'package:study_app/widgets/answer_card.dart';
 
@@ -18,7 +19,7 @@ class QuestionNumberCard extends StatelessWidget {
     Color _backgroundColor = Theme.of(context).primaryColor;
     switch (status) {
       case AnswerStatus.answered:
-        _backgroundColor=Get.isDarkMode?Theme.of(context).cardColor:Theme.of(context).primaryColor;
+        _backgroundColor=Get.isDarkMode?primaryColorDark.withOpacity(.6):Theme.of(context).primaryColor;
         break;
       case AnswerStatus.correct:
         _backgroundColor=correctAnswerColor;
@@ -27,7 +28,7 @@ class QuestionNumberCard extends StatelessWidget {
         _backgroundColor=wrongAnswerColor;
         break;
       case AnswerStatus.notanswered:
-        _backgroundColor=Get.isDarkMode?Colors.red.withOpacity(0.5):Theme.of(context).primaryColor.withOpacity(0.1);
+        _backgroundColor=Get.isDarkMode?cardColorDark.withOpacity(0.1):Theme.of(context).primaryColor.withOpacity(0.1);
         break;
 
       default:
@@ -43,7 +44,7 @@ class QuestionNumberCard extends StatelessWidget {
           child: Text(
             '$index',
             style: TextStyle(
-              color: status==AnswerStatus.notanswered?Theme.of(context).primaryColor:onSurfaceTextColor
+              color: status==AnswerStatus.notanswered?(Get.isDarkMode?onSurfaceTextColor:Theme.of(context).primaryColor):onSurfaceTextColor
             ),  
           ),
         ),

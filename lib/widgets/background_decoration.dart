@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:study_app/res/themes/app_color.dart';
+import 'package:study_app/res/themes/app_dark_theme.dart';
 
 class BackgroundDecoration extends StatelessWidget {
 
@@ -16,7 +18,7 @@ class BackgroundDecoration extends StatelessWidget {
           Positioned.fill(
             child: Container(
             decoration: BoxDecoration(
-              color: showGradient?null:Theme.of(context).primaryColor,
+              color: showGradient?null:(Get.isDarkMode?primaryDarkColordark:Theme.of(context).primaryColor),
               gradient: showGradient?mainGradient():null,
             ),
             child: CustomPaint(

@@ -30,7 +30,7 @@ class AppIntroductionScreen extends StatelessWidget {
               const SizedBox(height: 40,),
               AppCircleButton(
                 onPress: () {
-                    Get.toNamed("/home_screen");
+                    Get.offNamed("/home_screen");
                 },
                 child: const Icon(Icons.arrow_forward,size: 35,),
         

@@ -23,7 +23,7 @@ class AppCircleButton extends StatelessWidget {
       child: InkWell(
         onTap: onPress,
         child: Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: const EdgeInsets.all(4.0),
           child: child,
         ),
       ),

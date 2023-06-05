@@ -4,6 +4,7 @@ import 'package:study_app/controllers/question_paper/question_controller.dart';
 import 'package:study_app/firebase_ref/loading_status.dart';
 import 'package:study_app/res/text_style/custom_text_style.dart';
 import 'package:study_app/res/themes/app_color.dart';
+import 'package:study_app/res/themes/app_dark_theme.dart';
 import 'package:study_app/res/themes/ui_parameters.dart';
 import 'package:study_app/widgets/answer_card.dart';
 import 'package:study_app/widgets/background_decoration.dart';
@@ -77,28 +78,33 @@ class QuestionScreen extends GetView<QuestionController> {
               
               // if(controller.loadingStatus.value == LoadingStatus.loading)
                 ColoredBox(
-                color: Theme.of(context).scaffoldBackgroundColor,
+                color: Get.isDarkMode?primaryDarkColordark:Color.fromARGB(255, 240, 237, 255),
                 child: Padding(
                   padding: UIParameters.mobileScreenpadding,
                   child: Row(
                     children: [
                       Visibility(
                           visible: controller.isFirstQuestion,
-                          child: SizedBox(
-                            height: 55,
-                            width: 55,
-                            child: MainButton(
-                              onTap: () {
-                                controller.prevQuestion();
-                              },
-                              child: Icon(
-                                Icons.arrow_back_ios_new,
-                                color: Get.isDarkMode
-                                    ? onSurfaceTextColor
-                                    : Theme.of(context).primaryColor,
+                          child: Row(
+                            children: [
+                              SizedBox(
+                                width: 55,
+                                child: MainButton(
+                                  onTap: () {
+                                    controller.prevQuestion();
+                                  },
+                                  child: Icon(
+                                    Icons.arrow_back_ios_new,
+                                    color: Get.isDarkMode
+                                        ? onSurfaceTextColor
+                                        : Theme.of(context).primaryColor,
+                                  ),
+                                ),
                               ),
-                            ),
-                          )),
+                              SizedBox(width: 10,),
+                            ],
+                          )
+                        ),
 
                       Expanded(
                         child: Visibility(

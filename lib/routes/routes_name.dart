@@ -7,6 +7,7 @@ class RoutesName {
   static const String questionScreen = '/question_screen';  
   static const String testOverviewScreen = '/test_overview_screen';  
   static const String resultScreen = '/result_screen';  
+  static const String answerCheckScreen = '/answer_check_screen';  
   // static const String notifiedPage = '/notified_page';  
 
 }

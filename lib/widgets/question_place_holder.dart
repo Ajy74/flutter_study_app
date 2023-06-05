@@ -1,5 +1,6 @@
 import 'package:easy_separator/easy_separator.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:shimmer/shimmer.dart';
 
 class QuestionScreenHolder extends StatelessWidget {
@@ -20,7 +21,7 @@ class QuestionScreenHolder extends StatelessWidget {
     );
 
     return Shimmer.fromColors(
-      baseColor: Colors.white, 
+      baseColor: Get.isDarkMode?Colors.white.withOpacity(.4):Colors.white, 
       highlightColor: Colors.blueGrey.withOpacity(0.5),
       child: EasySeparatedColumn(
         separatorBuilder: (BuildContext context, int index) {
