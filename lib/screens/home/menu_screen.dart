@@ -41,11 +41,16 @@ class MenuScreen extends GetView<MyZoomDrawerController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
 
-                CircleAvatar(
-                  maxRadius: 60,
-                  backgroundColor: Colors.amber,
+                Obx(() {
+                  return controller.user.value==null?SizedBox():CircleAvatar(
+                  maxRadius: 40,
+                  backgroundColor: Colors.white.withOpacity(.1),
+                  backgroundImage: NetworkImage(controller.user.value!.photoURL??''),
+                );
+                }
                 ),
 
+                SizedBox(height: 10,),
                 
                 Obx(() => controller.user.value==null?
                   SizedBox():
